@@ -1,5 +1,6 @@
 package com.example.tobby;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
@@ -22,6 +23,6 @@ public class TobbyApplication {
   }
 
   public static void main(String[] args) {
-    MySpringApplication.run(TobbyApplication.class,  args);
+    SpringApplication.run(TobbyApplication.class,  args);
   }
 }
