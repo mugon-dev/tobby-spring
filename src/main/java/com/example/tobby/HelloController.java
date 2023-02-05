@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Meta Annotation
- * Annotation 위에 붙은 Annotation
+ * Meta Annotation Annotation 위에 붙은 Annotation
  */
 @RestController
 public class HelloController {
@@ -19,6 +18,7 @@ public class HelloController {
 
   @GetMapping("/hello")
   public String hello(String name) {
-    return helloService.sayHello(Objects.requireNonNull(name));
+    if(name == null || name.trim().length() == 0) throw new IllegalArgumentException();
+    return "Hello " + helloService.sayHello(name);
   }
 }
