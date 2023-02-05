@@ -1,5 +1,6 @@
 package com.example.tobby;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.assertj.core.api.Assertions;
@@ -11,16 +12,13 @@ public class HelloServiceTest {
   void simpleHelloService() {
     SimpleHelloService helloService = new SimpleHelloService();
     String ret = helloService.sayHello("Test");
-    assertThat(ret).isEqualTo("Test");
+    assertThat(ret).isEqualTo("Hello Test");
   }
 
   @Test
-  void failsHelloController() {
-    HelloController helloController = new HelloController(name -> name);
-    Assertions.assertThatThrownBy(() -> helloController.hello(null))
-              .isInstanceOf(IllegalArgumentException.class);
-
-    Assertions.assertThatThrownBy(() -> helloController.hello(""))
-              .isInstanceOf(IllegalArgumentException.class);
+  void helloDecorator(){
+    HelloDecorator decorator = new HelloDecorator(name->name);
+    String ret = decorator.sayHello("Test");
+    assertThat(ret).isEqualTo("*Test*");
   }
 }
