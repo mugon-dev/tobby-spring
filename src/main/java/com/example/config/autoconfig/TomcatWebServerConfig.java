@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 
 @MyAutoConfiguration
 //@Conditional(TomcatCondition.class)
@@ -15,8 +16,10 @@ public class TomcatWebServerConfig {
   @Bean("tomcatWebServerFactory")
   @ConditionalOnMissingBean
     // 사용자 정의된 빈이 없으면 사용
-  ServletWebServerFactory servletWebServerFactory() {
-    return new TomcatServletWebServerFactory();
+  ServletWebServerFactory servletWebServerFactory(Environment env) {
+    TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
+    serverFactory.setContextPath(env.getProperty("contextPath"));
+    return serverFactory;
   }
 
 //  static class TomcatCondition implements Condition {
