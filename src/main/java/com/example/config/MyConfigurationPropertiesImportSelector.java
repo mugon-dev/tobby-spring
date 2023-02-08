@@ -8,9 +8,9 @@ public class MyConfigurationPropertiesImportSelector implements DeferredImportSe
 
   @Override
   public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-    MultiValueMap<String, Object> attrs = importingClassMetadata.getAllAnnotationAttributes(
+    MultiValueMap<String, Object> attr = importingClassMetadata.getAllAnnotationAttributes(
         EnableMyConfigurationProperties.class.getName());
-    Class propertyClass = (Class) attrs.getFirst("value");
+    Class propertyClass = (Class) attr.getFirst("value");
     return new String[]{propertyClass.getName()};
   }
 }

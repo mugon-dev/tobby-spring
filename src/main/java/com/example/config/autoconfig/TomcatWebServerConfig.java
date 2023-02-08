@@ -16,7 +16,7 @@ public class TomcatWebServerConfig {
 
   @Bean("tomcatWebServerFactory")
   @ConditionalOnMissingBean
-    // 사용자 정의된 빈이 없으면 사용
+// 사용자 정의된 빈이 없으면 사용
   ServletWebServerFactory servletWebServerFactory(ServerProperties properties) {
     TomcatServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
     serverFactory.setContextPath(properties.getContextPath());

@@ -1,13 +1,12 @@
 package com.example.config.autoconfig;
 
 import org.springframework.boot.context.properties.bind.Binder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 //@MyAutoConfiguration
 public class ServerPropertiesConfig {
 
-  @Bean
+  //  @Bean
   public ServerProperties serverProperties(Environment environment) {
 //    ServerProperties properties = new ServerProperties();
 //    properties.setContextPath(environment.getProperty("contextPath"));
